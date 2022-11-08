@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '../cards.css'
 import ReactDOM from 'react-dom/client';
+import { wait } from '@testing-library/user-event/dist/utils';
 
 class Card extends React.Component {
     constructor(props) {
@@ -8,30 +9,29 @@ class Card extends React.Component {
         this.state = {isFlipped: false}
         this.state = {isPaired: false}
         this.state = {cardText: "Card"}
-        this.handleReset()
     }
 
     handleClick = () => {
-        this.setState(state => ({isFlipped: this.props.isFlipped}));
+        this.setState(state => ({isFlipped: !state.isFlipped}));
         this.setState(state => ({cardText: state.isFlipped ? "Flipped" : "Card"}))
         this.props.handleChoice(this)
     }
 
     handleReset = () => {
-        this.setState(state => ({isFlipped: !state.isFlipped}))
+        setTimeout(() => {this.setState(state => ({isFlipped: !state.isFlipped}))},1000)
+
     }
 
     handlePaired = () => {
-        this.setState(state => ({isPaired: !state.isPaired}))
+        setTimeout(() => {this.setState(state => ({isPaired: !state.isPaired}))},1000)
     }
 
     render() {
         if(this.state.isPaired === true){   // Case where the card is already matched
             return (
                 <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'green'}} className="cards">
-                    <h1>{this.props.cardText}</h1>
-                    <p>{this.state.cardText}</p>
-                    <p>{this.state.isFlipped.toString()}</p>
+                    <h1>Card</h1>
+                    <p>{this.props.cardText}</p>
                 </div>
             );
         }
@@ -40,16 +40,14 @@ class Card extends React.Component {
             return (
                 <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'red'}} className="cards" onClick={this.handleClick}>
                     <h1>{this.props.cardText}</h1>
-                    <p>{this.state.cardText}</p>
-                    <p>{this.state.isFlipped.toString()}</p>
                 </div>
             );
         }
 
-        return (    // Default face-down card
+        return (                            // Default face-down card
             <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'white'}} className="cards" onClick={this.handleClick}>
-                <h1>{this.props.cardText}</h1>
-                <p>{this.state.cardText}</p>
+                    <h1>Card</h1>
+                    <p>{this.props.cardText}</p>
             </div>
         )
     }
