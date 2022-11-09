@@ -29,7 +29,19 @@ function App() {
     setTimeout(() => document.getElementById("gameContainer").style.pointerEvents = 'auto', 1000)
   }
 
-  const cardVals = ["Card1","Card2","Card3","Card4","Card1","Card2","Card3","Card4"]
+  function shuffle(cards){
+    let numofCards = cards.length, temp, randomNum
+    while(numofCards) {
+      randomNum = Math.floor(Math.random() * (numofCards)--)
+      temp = cards[numofCards]
+      cards[numofCards] = cards[randomNum]
+      cards[randomNum] = temp
+    }
+    return cards
+  }
+
+  let cardVals = ["Card1","Card2","Card3","Card4","Card1","Card2","Card3","Card4"]
+  shuffle(cardVals);
   return (
     <div className="App" id="gameContainer">
       {cardVals.map((item,idx)=>{return <Card key={idx} disabled={false} cardText={item} isFlipped={true} handleChoice={handleChoice}/>})}

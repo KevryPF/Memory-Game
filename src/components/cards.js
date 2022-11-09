@@ -14,6 +14,7 @@ class Card extends React.Component {
     handleClick = () => {
         this.setState(state => ({isFlipped: !state.isFlipped}));
         this.setState(state => ({cardText: state.isFlipped ? "Flipped" : "Card"}))
+        console.log(this.props.cardText)
         this.props.handleChoice(this)
     }
 
