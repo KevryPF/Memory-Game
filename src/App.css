@@ -1,8 +1,25 @@
 
+
 .App {
   text-align: center;
   margin-top: 35px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1px;
+
+}
+
+
+.buttonDiv{
+  align-items: center;
+  text-align: center;
+  background-color: aquamarine;
+}
+
+.shuffle {
+  background-color: greenyellow;
+  font-size: 30px;
+  color: black;
+  border: none;
+  border-radius: 20%;
 }
