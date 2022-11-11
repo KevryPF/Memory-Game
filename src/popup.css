@@ -1,0 +1,21 @@
+.Popup{
+    display: none;
+    margin-top: 5%;
+    margin-left: 35%;
+    position: absolute;
+    background-color: blanchedalmond;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+}
+
+.again{
+    margin-top:10%;
+    background-color: aquamarine;
+}
+
+.closeBtn{
+    float: right;
+    background: none;
+    border: none;
+}
