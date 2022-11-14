@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import '../cards.css'
-import ReactDOM from 'react-dom/client';
-import { wait } from '@testing-library/user-event/dist/utils';
 
 class Card extends React.Component {
     constructor(props) {
