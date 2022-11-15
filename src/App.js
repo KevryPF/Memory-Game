@@ -2,6 +2,7 @@ import './App.css';
 import Card from './components/cards.js'
 import React, { useEffect, useState } from 'react';
 import Popup from './components/popup';
+import { arrayLogos } from './logos.js'
 
 function App() {
 
@@ -11,9 +12,9 @@ function App() {
   const [gameSize, setGameSize] = useState(4)
 
   let arr = [] //Array to keep track of current pair
-  let cards = ["Card1","Card2","Card3","Card4","Card5","Card6","Card7","Card8"]
-  let cardVals = cards.slice(0,gameSize).concat(cards.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
+  let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
 
+  
   useEffect(() =>{
     setCardv(cardVals)
     setPaired([])

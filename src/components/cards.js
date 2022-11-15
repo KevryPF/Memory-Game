@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import '../cards.css'
+import google from '../images/google.png'
 
 class Card extends React.Component {
     constructor(props) {
@@ -29,8 +30,8 @@ class Card extends React.Component {
         if(this.state.isPaired === true){   // Case where the card is already matched
             return (
                 <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'green'}} className="cards">
-                    <h1>Card</h1>
-                    <p>{this.props.cardText}</p>
+                    <img src ={this.props.cardText} width = '50px'></img>
+                    
                 </div>
             );
         }
@@ -38,7 +39,8 @@ class Card extends React.Component {
         if(this.state.isFlipped === true){  // Case where the card is flipped
             return (
                 <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'red'}} className="cards" onClick={this.handleClick}>
-                    <h1>{this.props.cardText}</h1>
+                    <img src ={this.props.cardText} width = '50px'></img>
+                    
                 </div>
             );
         }
@@ -46,7 +48,7 @@ class Card extends React.Component {
         return (                            // Default face-down card
             <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'white'}} className="cards" onClick={this.handleClick}>
                     <h1>Card</h1>
-                    <p>{this.props.cardText}</p>
+                    <img src ={this.props.cardText} width = '50px'></img>
             </div>
         )
     }
