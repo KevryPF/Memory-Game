@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import '../cards.css'
+import google from '../images/google.png'
 
 class Card extends React.Component {
     constructor(props) {
@@ -28,25 +29,26 @@ class Card extends React.Component {
     render() {
         if(this.state.isPaired === true){   // Case where the card is already matched
             return (
-                <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'green'}} className="cards">
-                    <h1>Card</h1>
-                    <p>{this.props.cardText}</p>
+                <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">
+                    <img src ={this.props.cardText} width = '75px'></img>
+                    
                 </div>
             );
         }
 
         if(this.state.isFlipped === true){  // Case where the card is flipped
             return (
-                <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'red'}} className="cards" onClick={this.handleClick}>
-                    <h1>{this.props.cardText}</h1>
+                <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'red'}} className="cards" id="flipped" onClick={this.handleClick}>
+                    <img src ={this.props.cardText} width = '75px'></img>
+                    
                 </div>
             );
         }
 
         return (                            // Default face-down card
-            <div style={{height:'100px', width:'75px', borderStyle:'solid', borderColor:'white'}} className="cards" onClick={this.handleClick}>
+            <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'white'}} className="cards" onClick={this.handleClick}>
                     <h1>Card</h1>
-                    <p>{this.props.cardText}</p>
+                    
             </div>
         )
     }

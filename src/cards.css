@@ -1,7 +1,16 @@
 .cards {
     display: block;
-    background-color: lightblue;
+    background: linear-gradient(aquamarine, rgb(77, 219, 172), #48ecb6);
     height: 100px;
     width: 75px;
     border: solid 2px red;
+    border-radius: 5px;
+}
+
+img{
+    margin-top: 25px;
+}
+
+#flipped{
+    background: white;
 }
