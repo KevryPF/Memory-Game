@@ -72,36 +72,16 @@ function App() {
     <>
 
     <div className='content'>
-
       <div className='navBar'>
         <h1>Match the Logos!</h1>
       </div>
       <div className='leftBar'>
-      <GameInfo wins={wins}/>
-        {/*MAKE THE BELOW DIV INTO A COMPONENT (GAMEINFO)*/}
-      {/*<div className ='gameInfo'>
-      
-        <h1>Game Info</h1>
-        <p>Pairs matched: {paired.length/2}/{cardVals.length/2}</p>
-        <p>Times Won: {wins}</p>
-        <p>Game Size: 
-        <select id="gSize" value={gameSize*2} onChange={() => {setGameSize(document.getElementById("gSize").value/2)}}>
-          <option value ="8">8</option>
-          <option value ="10">10</option>
-          <option value ="12">12</option>
-          <option value ="14">14</option>
-          <option value ="16">16</option>
-        </select> 
-        Cards
-        </p>
-        <button className="shuffle" onClick = {() => shuffle(cardVals)}>Shuffle</button>
-  </div>*/}
+        <GameInfo wins={wins} paired={paired} gameSize={gameSize} shuffle={() => shuffle(cardVals)} setGameSize={() => setGameSize(document.getElementById("gSize").value/2)}/>
       </div>
-      <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
+        <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
       <div className="App" id="gameContainer">
         {cardV.map((item,idx)=>{return <Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>})}
       </div>
-      
     </div>
 
     </>
