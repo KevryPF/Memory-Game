@@ -27,7 +27,6 @@ class GameInfo extends React.Component{
                 <p>Times Won: {this.props.wins} </p>
                 <p>Current Accuracy: {Math.trunc((this.props.paired.length/this.props.clicks)*100) || 0}%</p>
                 <button className="shuffle" onClick={() => this.props.shuffle()}>Shuffle</button>
-                <button className="hintBtn">Hint</button>
             </div>
         );
 

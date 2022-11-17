@@ -16,13 +16,13 @@ class Card extends React.Component {
         this.props.handleChoice(this)
     }
 
-    handleReset = () => {
-        setTimeout(() => {this.setState(state => ({isFlipped: !state.isFlipped}))},1000)
+    handleReset = (time) => {
+        setTimeout(() => {this.setState(state => ({isFlipped: !state.isFlipped}))},time)
 
     }
 
-    handlePaired = () => {
-        setTimeout(() => {this.setState(state => ({isPaired: !state.isPaired}))},1000)
+    handlePaired = (time) => {
+        setTimeout(() => {this.setState(state => ({isPaired: !state.isPaired}))},time)
     }
 
     render() {

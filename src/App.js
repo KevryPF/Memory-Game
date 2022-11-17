@@ -34,8 +34,8 @@ function App() {
             console.log("MATCH!")
             handlePause()
             setPaired(paired.concat(arr))
-            arr[0].handlePaired()
-            arr[1].handlePaired()
+            arr[0].handlePaired(1000)
+            arr[1].handlePaired(1000)
             arr = []
             setClicks(clicks + 2)
             if (paired.length == cardVals.length-2){          //Win Case
@@ -47,8 +47,8 @@ function App() {
           else if(arr[0].props.cardText != arr[1].props.cardText){ //Pair is not a match
             console.log("WRONG!")
             handlePause()
-            arr[0].handleReset()
-            arr[1].handleReset()
+            arr[0].handleReset(1000)
+            arr[1].handleReset(1000)
             arr = []
             setClicks(clicks + 2)
           }}
@@ -61,6 +61,7 @@ function App() {
 
   function shuffle(cards){  //Shuffles Cards and resets selected cards
     console.log("Shuffle")
+
     let numofCards = cards.length, temp, randomNum
     while(numofCards) {
       randomNum = Math.floor(Math.random() * (numofCards)--)
@@ -69,10 +70,13 @@ function App() {
       cards[randomNum] = temp
     }
     for (let i = 0; i < paired.length; i++){
-      console.log(paired)
-      paired[i].handlePaired()
-      paired[i].handleReset()
+      paired[i].handlePaired(0)
+      paired[i].handleReset(0)
     }
+    for(let i = 0; i < arr.length; i++){
+      arr[i].handleReset()
+    }
+    arr = []
     setClicks(0)
     setPaired([])
     setCardv(cards)
@@ -93,7 +97,6 @@ function App() {
       <div className="App" id="gameContainer">
         {cardV.map((item,idx)=><Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>)}
       </div>
-      <button> Yet</button>
     </div>
     </>
     
