@@ -11,6 +11,7 @@ function App() {
   const [paired, setPaired] = useState([])
   const [wins, setWins] = useState(0)
   const [gameSize, setGameSize] = useState(4)
+  const [clicks, setClicks] = useState(0)
 
   let arr = [] //Array to keep track of current pair
   let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
@@ -31,6 +32,7 @@ function App() {
             arr[0].handlePaired()
             arr[1].handlePaired()
             arr = []
+            setClicks(clicks + 2)
             if (paired.length == cardVals.length-2){          //Win Case
               console.log("WIN")
               setWins(wins+1)
@@ -43,7 +45,9 @@ function App() {
             arr[0].handleReset()
             arr[1].handleReset()
             arr = []
+            setClicks(clicks + 2)
           }}
+          
   }
 
   function handlePause(){ //Turns off click functionality when comparing card choices
@@ -64,6 +68,7 @@ function App() {
       paired[i].handlePaired()
       paired[i].handleReset()
     }
+    setClicks(0)
     setPaired([])
     setCardv(cards)
   }
@@ -76,7 +81,7 @@ function App() {
         <h1>Match the Logos!</h1>
       </div>
       <div className='leftBar'>
-        <GameInfo wins={wins} paired={paired} gameSize={gameSize} shuffle={() => shuffle(cardVals)} setGameSize={() => setGameSize(document.getElementById("gSize").value/2)}/>
+        <GameInfo wins={wins} paired={paired} gameSize={gameSize} shuffle={() => shuffle(cardVals)} setGameSize={() => setGameSize(document.getElementById("gSize").value/2)} clicks = {clicks}/>
       </div>
         <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
       <div className="App" id="gameContainer">
