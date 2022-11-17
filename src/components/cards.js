@@ -13,7 +13,6 @@ class Card extends React.Component {
     handleClick = () => {
         this.setState(state => ({isFlipped: !state.isFlipped}));
         this.setState(state => ({cardText: state.isFlipped ? "Flipped" : "Card"}))
-        console.log(this.props.cardText)
         this.props.handleChoice(this)
     }
 
@@ -31,7 +30,6 @@ class Card extends React.Component {
             return (
                 <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">
                     <img src ={this.props.cardText} width = '75px'></img>
-                    
                 </div>
             );
         }
@@ -40,7 +38,6 @@ class Card extends React.Component {
             return (
                 <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'red'}} className="cards" id="flipped" onClick={this.handleClick}>
                     <img src ={this.props.cardText} width = '75px'></img>
-                    
                 </div>
             );
         }
@@ -48,7 +45,6 @@ class Card extends React.Component {
         return (                            // Default face-down card
             <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'white'}} className="cards" onClick={this.handleClick}>
                     <h1>Card</h1>
-                    
             </div>
         )
     }

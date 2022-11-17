@@ -2,6 +2,7 @@ import './App.css';
 import Card from './components/cards.js'
 import React, { useEffect, useState } from 'react';
 import Popup from './components/popup';
+import GameInfo from './components/gameInfo';
 import { arrayLogos } from './logos.js'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [paired, setPaired] = useState([])
   const [wins, setWins] = useState(0)
   const [gameSize, setGameSize] = useState(4)
+  const [clicks, setClicks] = useState(0)
 
   let arr = [] //Array to keep track of current pair
   let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
@@ -30,6 +32,7 @@ function App() {
             arr[0].handlePaired()
             arr[1].handlePaired()
             arr = []
+            setClicks(clicks + 2)
             if (paired.length == cardVals.length-2){          //Win Case
               console.log("WIN")
               setWins(wins+1)
@@ -42,7 +45,9 @@ function App() {
             arr[0].handleReset()
             arr[1].handleReset()
             arr = []
+            setClicks(clicks + 2)
           }}
+          
   }
 
   function handlePause(){ //Turns off click functionality when comparing card choices
@@ -63,6 +68,7 @@ function App() {
       paired[i].handlePaired()
       paired[i].handleReset()
     }
+    setClicks(0)
     setPaired([])
     setCardv(cards)
   }
@@ -75,30 +81,12 @@ function App() {
         <h1>Match the Logos!</h1>
       </div>
       <div className='leftBar'>
-        {/*MAKE THE BELOW DIV INTO A COMPONENT (GAMEINFO)*/}
-      <div className ='gameInfo'>
-      
-        <h1>Game Info</h1>
-        <p>Pairs matched: {paired.length/2}/{cardVals.length/2}</p>
-        <p>Times Won: {wins}</p>
-        <p>Game Size: 
-        <select id="gSize" value={gameSize*2} onChange={() => {setGameSize(document.getElementById("gSize").value/2)}}>
-          <option value ="8">8</option>
-          <option value ="10">10</option>
-          <option value ="12">12</option>
-          <option value ="14">14</option>
-          <option value ="16">16</option>
-        </select> 
-        Cards
-        </p>
-        <button className="shuffle" onClick = {() => shuffle(cardVals)}>Shuffle</button>
+        <GameInfo wins={wins} paired={paired} gameSize={gameSize} shuffle={() => shuffle(cardVals)} setGameSize={() => setGameSize(document.getElementById("gSize").value/2)} clicks = {clicks}/>
       </div>
-      </div>
-      <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
+        <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
       <div className="App" id="gameContainer">
         {cardV.map((item,idx)=>{return <Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>})}
       </div>
-      
     </div>
 
     </>
