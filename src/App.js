@@ -13,7 +13,6 @@ function App() {
 
   let arr = [] //Array to keep track of current pair
   let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
-
   
   useEffect(() =>{
     setCardv(cardVals)
@@ -70,20 +69,20 @@ function App() {
 
   return (
     <>
+
     <div className='content'>
-      <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
-      <div className='buttonDiv'>
-        <button className="shuffle" onClick = {() => shuffle(cardVals)}>Shuffle</button>
+      <div className='navBar'>
+        <h1>Match the Logos!</h1>
       </div>
-      <div className="App" id="gameContainer">
-        {cardV.map((item,idx)=>{return <Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>})}
-      </div>
-      <div>
+      <div className='leftBar'>
+        {/*MAKE THE BELOW DIV INTO A COMPONENT (GAMEINFO)*/}
+      <div className ='gameInfo'>
+      
         <h1>Game Info</h1>
         <p>Pairs matched: {paired.length/2}/{cardVals.length/2}</p>
         <p>Times Won: {wins}</p>
         <p>Game Size: 
-        <select id="gSize" value={gameSize} onChange={() => {setGameSize(document.getElementById("gSize").value/2)}}>
+        <select id="gSize" value={gameSize*2} onChange={() => {setGameSize(document.getElementById("gSize").value/2)}}>
           <option value ="8">8</option>
           <option value ="10">10</option>
           <option value ="12">12</option>
@@ -92,7 +91,14 @@ function App() {
         </select> 
         Cards
         </p>
+        <button className="shuffle" onClick = {() => shuffle(cardVals)}>Shuffle</button>
       </div>
+      </div>
+      <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
+      <div className="App" id="gameContainer">
+        {cardV.map((item,idx)=>{return <Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>})}
+      </div>
+      
     </div>
 
     </>

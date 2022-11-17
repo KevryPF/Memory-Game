@@ -1,21 +1,30 @@
 .Popup{
-    display: none;
+    color:white;
+    display: block;
     margin-top: 5%;
     margin-left: 35%;
     position: absolute;
-    background-color: blanchedalmond;
+    background-color: rgb(66, 66, 66);
+    border:solid 2px aquamarine;
+    border-radius: 5px;
     width: 500px;
     height: 300px;
     text-align: center;
 }
 
 .again{
+    font-size: 20px;
+    border: solid 2px white;
+    border-radius: 5px;
     margin-top:10%;
     background-color: aquamarine;
 }
 
 .closeBtn{
-    float: right;
+    position:absolute;
+    font-size: 20px;
+    color:red;
+    right: 0px;
     background: none;
     border: none;
 }
