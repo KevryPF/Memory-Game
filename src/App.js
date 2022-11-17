@@ -6,7 +6,7 @@ import GameInfo from './components/gameInfo';
 import { arrayLogos } from './logos.js'
 
 function App() {
-
+  
   const [cardV, setCardv] = useState([])
   const [paired, setPaired] = useState([])
   const [wins, setWins] = useState(0)
@@ -15,7 +15,7 @@ function App() {
 
   let arr = [] //Array to keep track of current pair
   let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
-  
+
   useEffect(() =>{
     setCardv(cardVals)
     setPaired([])
@@ -25,7 +25,12 @@ function App() {
   function handleChoice(card){
       arr.push(card)
         if (arr.length > 1){
-          if(arr[0].props.cardText == arr[1].props.cardText){ //Pair is a match
+          if(arr[0] == arr[1]) {
+            console.log("Same Card")
+            handlePause()
+            arr = []
+          }
+          else if(arr[0].props.cardText == arr[1].props.cardText){ //Pair is a match
             console.log("MATCH!")
             handlePause()
             setPaired(paired.concat(arr))
@@ -39,7 +44,7 @@ function App() {
               document.getElementsByClassName('Popup')[0].style["display"] = 'block';
             }
           }
-          if(arr[0].props.cardText != arr[1].props.cardText){ //Pair is not a match
+          else if(arr[0].props.cardText != arr[1].props.cardText){ //Pair is not a match
             console.log("WRONG!")
             handlePause()
             arr[0].handleReset()
@@ -47,7 +52,6 @@ function App() {
             arr = []
             setClicks(clicks + 2)
           }}
-          
   }
 
   function handlePause(){ //Turns off click functionality when comparing card choices
@@ -65,6 +69,7 @@ function App() {
       cards[randomNum] = temp
     }
     for (let i = 0; i < paired.length; i++){
+      console.log(paired)
       paired[i].handlePaired()
       paired[i].handleReset()
     }
@@ -72,6 +77,7 @@ function App() {
     setPaired([])
     setCardv(cards)
   }
+
 
   return (
     <>
@@ -85,12 +91,12 @@ function App() {
       </div>
         <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
       <div className="App" id="gameContainer">
-        {cardV.map((item,idx)=>{return <Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>})}
+        {cardV.map((item,idx)=><Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>)}
       </div>
+      <button> Yet</button>
     </div>
-
     </>
-
+    
   );
 }
 
