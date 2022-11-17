@@ -12,7 +12,7 @@ function App() {
   const [wins, setWins] = useState(0)
   const [gameSize, setGameSize] = useState(4)
   const [clicks, setClicks] = useState(0)
-
+  const [revealAll, setReveal] = useState(false)
   let arr = [] //Array to keep track of current pair
   let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
 
@@ -21,6 +21,8 @@ function App() {
     setPaired([])
     shuffle(cardVals)
   }, [gameSize])
+
+
 
   function handleChoice(card){
       arr.push(card)
@@ -52,6 +54,7 @@ function App() {
             arr = []
             setClicks(clicks + 2)
           }}
+
   }
 
   function handlePause(){ //Turns off click functionality when comparing card choices
@@ -61,7 +64,10 @@ function App() {
 
   function shuffle(cards){  //Shuffles Cards and resets selected cards
     console.log("Shuffle")
-
+    if (revealAll==true){
+      
+    }
+    setReveal(false)
     let numofCards = cards.length, temp, randomNum
     while(numofCards) {
       randomNum = Math.floor(Math.random() * (numofCards)--)
@@ -85,19 +91,19 @@ function App() {
 
   return (
     <>
-
     <div className='content'>
       <div className='navBar'>
         <h1>Match the Logos!</h1>
       </div>
       <div className='leftBar'>
-        <GameInfo wins={wins} paired={paired} gameSize={gameSize} shuffle={() => shuffle(cardVals)} setGameSize={() => setGameSize(document.getElementById("gSize").value/2)} clicks = {clicks}/>
+        <GameInfo wins={wins} paired={paired} gameSize={gameSize} shuffle={() => shuffle(cardVals)} setGameSize={() => setGameSize(document.getElementById("gSize").value/2)} clicks = {clicks} setReveal={setReveal}/>
       </div>
         <Popup func = {() => shuffle(cardVals)} wins = {wins}></Popup>
       <div className="App" id="gameContainer">
-        {cardV.map((item,idx)=><Card key={idx} disabled={false} cardText={item} handleChoice={handleChoice}/>)}
+        {cardV.map((item,idx)=><Card key={idx} disabled={false} cardText={item} revealAll={revealAll} handleChoice={handleChoice}/>)}
       </div>
     </div>
+    
     </>
     
   );

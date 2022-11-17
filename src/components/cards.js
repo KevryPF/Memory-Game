@@ -17,7 +17,7 @@ class Card extends React.Component {
     }
 
     handleReset = (time) => {
-        setTimeout(() => {this.setState(state => ({isFlipped: !state.isFlipped}))},time)
+        setTimeout(() => {this.setState(state => ({isFlipped: false}))},time)
 
     }
 
@@ -26,7 +26,15 @@ class Card extends React.Component {
     }
 
     render() {
-        if(this.state.isPaired === true){   // Case where the card is already matched
+        if(this.props.revealAll === true) {
+            return(
+                <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">
+                    <img src ={this.props.cardText} width = '75px'></img>
+                </div>
+            )
+        }
+
+        if(this.state.isPaired === true){   // Case where the card is already matched or all cards are forcibly flipped
             return (
                 
                 <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">

@@ -14,7 +14,7 @@ class GameInfo extends React.Component{
                 <h1>Game Info</h1>
                 <p>Pairs matched: {this.props.paired.length/2}/{this.props.gameSize} </p>
                 <p>Game Size: 
-                <select id="gSize" value={this.props.gameSize*2} onChange={() => this.props.setGameSize()}>
+                <select id="gSize" value={this.props.gameSize*2} onChange={() => {this.props.setGameSize(); this.props.shuffle()}}>
                 <option value ="8">8</option>
                 <option value ="10">10</option>
                 <option value ="12">12</option>
@@ -27,6 +27,7 @@ class GameInfo extends React.Component{
                 <p>Times Won: {this.props.wins} </p>
                 <p>Current Accuracy: {Math.trunc((this.props.paired.length/this.props.clicks)*100) || 0}%</p>
                 <button className="shuffle" onClick={() => this.props.shuffle()}>Shuffle</button>
+                <button onClick={() => this.props.setReveal(true)}>REVEAL</button>
             </div>
         );
 
