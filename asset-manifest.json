@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Memory-Game/static/css/main.54e6621e.css",
+    "main.js": "/Memory-Game/static/js/main.858f84c2.js",
+    "static/js/787.69b12325.chunk.js": "/Memory-Game/static/js/787.69b12325.chunk.js",
+    "static/media/meta.png": "/Memory-Game/static/media/meta.e9cdaa6b9ed9d11ea3e9.png",
+    "static/media/google.png": "/Memory-Game/static/media/google.c37dc20a021290fe498a.png",
+    "static/media/twitter.png": "/Memory-Game/static/media/twitter.0e3a0474b2c2409758f8.png",
+    "static/media/apple.png": "/Memory-Game/static/media/apple.440b0d23ae61e3b7f708.png",
+    "static/media/netflix.png": "/Memory-Game/static/media/netflix.337f8c509716c7e6846e.png",
+    "static/media/amazon.png": "/Memory-Game/static/media/amazon.2cc3f6195b62dc374e8e.png",
+    "index.html": "/Memory-Game/index.html",
+    "main.54e6621e.css.map": "/Memory-Game/static/css/main.54e6621e.css.map",
+    "main.858f84c2.js.map": "/Memory-Game/static/js/main.858f84c2.js.map",
+    "787.69b12325.chunk.js.map": "/Memory-Game/static/js/787.69b12325.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54e6621e.css",
+    "static/js/main.858f84c2.js"
+  ]
+}
