@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import '../cards.css'
-import google from '../images/google.png'
 
 class Card extends React.Component {
     constructor(props) {
@@ -16,18 +15,28 @@ class Card extends React.Component {
         this.props.handleChoice(this)
     }
 
-    handleReset = () => {
-        setTimeout(() => {this.setState(state => ({isFlipped: !state.isFlipped}))},1000)
+    handleReset = (time) => {
+        setTimeout(() => {this.setState(state => ({isFlipped: false}))},time)
 
     }
 
-    handlePaired = () => {
-        setTimeout(() => {this.setState(state => ({isPaired: !state.isPaired}))},1000)
+    handlePaired = (time) => {
+        setTimeout(() => {this.setState(state => ({isPaired: !state.isPaired}))},time)
     }
 
     render() {
-        if(this.state.isPaired === true){   // Case where the card is already matched
+        if(this.props.revealAll === true) { //Case where the reveal all buttom is clicked
+            {this.state.isFlipped = false}
+            return(
+                <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">
+                    <img src ={this.props.cardText} width = '75px'></img>
+                </div>
+            )
+        }
+
+        if(this.state.isPaired === true){   // Case where the card is already matched or all cards are forcibly flipped
             return (
+                
                 <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">
                     <img src ={this.props.cardText} width = '75px'></img>
                 </div>
@@ -43,7 +52,7 @@ class Card extends React.Component {
         }
 
         return (                            // Default face-down card
-            <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'white'}} className="cards" onClick={this.handleClick}>
+            <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'white'}} className="cards" id="notFlipped" onClick={this.handleClick}>
                     <h1>Card</h1>
             </div>
         )

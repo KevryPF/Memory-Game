@@ -4,7 +4,6 @@ import '../popup.css';
 class Popup extends React.Component{
     constructor(props){
         super(props);
-        this.state = {wins: props.wins}
     }
 
     closePopup = () => {
