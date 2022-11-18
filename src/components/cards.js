@@ -45,7 +45,7 @@ class Card extends React.Component {
 
         if(this.state.isFlipped === true){  // Case where the card is flipped
             return (
-                <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'red'}} className="cards" id="flipped" onClick={this.handleClick}>
+                <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'red'}} className="cards" id="flipped">
                     <img src ={this.props.cardText} width = '75px'></img>
                 </div>
             );
