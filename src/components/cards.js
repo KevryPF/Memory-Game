@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import '../cards.css'
-import google from '../images/google.png'
 
 class Card extends React.Component {
     constructor(props) {
@@ -26,7 +25,8 @@ class Card extends React.Component {
     }
 
     render() {
-        if(this.props.revealAll === true) {
+        if(this.props.revealAll === true) { //Case where the reveal all buttom is clicked
+            {this.state.isFlipped = false}
             return(
                 <div style={{height:'125px', width:'100px', borderStyle:'solid', borderColor:'green'}} className="cards" id="flipped">
                     <img src ={this.props.cardText} width = '75px'></img>

@@ -13,6 +13,7 @@ function App() {
   const [gameSize, setGameSize] = useState(4)
   const [clicks, setClicks] = useState(0)
   const [revealAll, setReveal] = useState(false)
+
   let arr = [] //Array to keep track of current pair
   let cardVals = arrayLogos.slice(0,gameSize).concat(arrayLogos.slice(0,gameSize))  //Selects first gameSize cards and then doubles the cards so there are pairs of each card
 
@@ -21,8 +22,6 @@ function App() {
     setPaired([])
     shuffle(cardVals)
   }, [gameSize])
-
-
 
   function handleChoice(card){
       arr.push(card)
@@ -54,7 +53,6 @@ function App() {
             arr = []
             setClicks(clicks + 2)
           }}
-
   }
 
   function handlePause(){ //Turns off click functionality when comparing card choices
@@ -88,7 +86,6 @@ function App() {
     setCardv(cards)
   }
 
-
   return (
     <>
     <div className='content'>
@@ -103,9 +100,7 @@ function App() {
         {cardV.map((item,idx)=><Card key={idx} disabled={false} cardText={item} revealAll={revealAll} handleChoice={handleChoice}/>)}
       </div>
     </div>
-    
     </>
-    
   );
 }
 

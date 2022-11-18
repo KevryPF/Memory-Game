@@ -1,4 +1,14 @@
-.gameInfo {
-    background-color: red;
+.gameInfo{
+    margin-left: 25px;
     color:white;
-}
+    font-size: 20px;
+  }
+  
+
+.btn {
+    background-color: white;
+    font-size: 30px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+  }

@@ -12,12 +12,6 @@ body {
   background-color: rgb(39, 38, 38);
 }
 
-.gameInfo{
-  margin-left: 25px;
-  color:white;
-  font-size: 20px;
-}
-
 .leftBar{
   margin-top: 50px;
   width: 300px;
@@ -27,17 +21,10 @@ body {
   border-radius: 5px;
   border: solid 2px white;
 }
+
 .content {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   overflow: hidden;
-}
-
-.shuffle {
-  background-color: white;
-  font-size: 30px;
-  color: black;
-  border: none;
-  border-radius: 5px;
 }
 
 .navBar{
